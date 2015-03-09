@@ -18,7 +18,7 @@ public class Skill : MonoBehaviour {
 	
 	IEnumerator Begin(){
 		float exit = 1;
-		this.renderer.material.color = Color.red;
+		this.GetComponent<Renderer>().material.color = Color.red;
 		
 		while(exit > 0){
 			exit -= Time.deltaTime;
@@ -33,7 +33,7 @@ public class Skill : MonoBehaviour {
 	
 	IEnumerator Loop1(){
 		float exit = 2;
-		this.renderer.material.color = Color.yellow;
+		this.GetComponent<Renderer>().material.color = Color.yellow;
 		
 		while(exit > 0){
 			exit -= Time.deltaTime;
@@ -52,7 +52,7 @@ public class Skill : MonoBehaviour {
 	
 	IEnumerator End(){
 		float exit = 1;
-		this.renderer.material.color = Color.green;
+		this.GetComponent<Renderer>().material.color = Color.green;
 		
 		while(exit > 0){
 			exit -= Time.deltaTime;
