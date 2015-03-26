@@ -41,8 +41,8 @@ public class Skill : MonoBehaviour {
 			//Content
 			
 			if(interrupt){
-				yield break;
 				this.enabled = false;
+				yield break;
 			}
 			yield return null;
 		}
