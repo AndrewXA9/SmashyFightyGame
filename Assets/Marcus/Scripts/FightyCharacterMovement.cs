@@ -15,7 +15,7 @@ public class FightyCharacterMovement : MonoBehaviour
 	const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-	private Quaternion theRotation;
+	private bool m_doubleJump = false;
 
 
 	private void Awake()
@@ -39,6 +39,11 @@ public class FightyCharacterMovement : MonoBehaviour
 			{
 				m_Grounded = true;
 			}
+		}
+
+		if(m_Grounded)
+		{
+			m_doubleJump = false;
 		}
 
 
@@ -66,12 +71,18 @@ public class FightyCharacterMovement : MonoBehaviour
 				Flip();
 			}
 		}
-		// If the player should jump...
-		if (m_Grounded && jump)
+		// If the player can jump or double jump
+		if ((m_Grounded || !m_doubleJump)&& jump)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+
+			// Check if grounded, if not activate
+			if(!m_Grounded)
+			{
+				m_doubleJump = true;
+			}
 		}
 	}
 
