@@ -3,11 +3,14 @@ using System.Collections;
 
 public class LedgeGrab : MonoBehaviour 
 {
+	[SerializeField] private Vector3 ledgeBuffer;
+
+	private Transform playerObject;
 
 	// Use this for initialization
 	void Start () 
 	{
-	
+		playerObject = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
@@ -18,9 +21,19 @@ public class LedgeGrab : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.gameObject.tag == "Player")
 		{
-			//hold player at position until jump is applied
+			GrabLedge();
 		}
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+
+	}
+
+	void GrabLedge()
+	{
+		playerObject.transform.position = transform.position + ledgeBuffer;
 	}
 }
