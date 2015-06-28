@@ -76,6 +76,7 @@ public class FightyCharacterMovement : MonoBehaviour
 		{
 			// Add a vertical force to the player.
 			grounded = false;
+			characterRigidbody2D.velocity = new Vector2(characterRigidbody2D.velocity.x,0.0f);  //set gravity to zero for proper double jump
 			characterRigidbody2D.AddForce(new Vector2(0f, jumpForce));
 
 			// Check if grounded, if not activate
