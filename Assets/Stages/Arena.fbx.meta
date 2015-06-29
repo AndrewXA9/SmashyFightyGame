@@ -1,47 +1,16 @@
 fileFormatVersion: 2
-guid: 320af14bffcbb2547846fe69205d49de
-timeCreated: 1428200095
+guid: 369c3a14d2c55bf458643629da405287
+timeCreated: 1435544627
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: MESH_Ladder
-    100002: MESH_Platform
-    100004: MESH_Platform_A
-    100006: MESH_Platform_B
-    100008: MESH_Stage
-    100010: MESH_Train
-    100012: pCube1
-    100014: //RootNode
-    400000: MESH_Ladder
-    400002: MESH_Platform
-    400004: MESH_Platform_A
-    400006: MESH_Platform_B
-    400008: MESH_Stage
-    400010: MESH_Train
-    400012: pCube1
-    400014: //RootNode
-    2300000: MESH_Ladder
-    2300002: MESH_Platform
-    2300004: MESH_Platform_A
-    2300006: MESH_Platform_B
-    2300008: MESH_Stage
-    2300010: MESH_Train
-    2300012: pCube1
-    3300000: MESH_Ladder
-    3300002: MESH_Platform
-    3300004: MESH_Platform_A
-    3300006: MESH_Platform_B
-    3300008: MESH_Stage
-    3300010: MESH_Train
-    3300012: pCube1
-    4300000: pCube1
-    4300002: MESH_Stage
-    4300004: MESH_Train
-    4300006: MESH_Ladder
-    4300008: MESH_Platform_B
-    4300010: MESH_Platform_A
-    4300012: MESH_Platform
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCube9
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,6 +20,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -95,7 +68,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
