@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class InputListener : MonoBehaviour {
 	
+	public int playerIndex = 1;
+	
 	public MonoBehaviour basicNeutral;
 	public MonoBehaviour basicSide;
 	public MonoBehaviour basicUp;
@@ -19,7 +21,7 @@ public class InputListener : MonoBehaviour {
 	public MonoBehaviour specialUp;
 	public MonoBehaviour specialDown;
 	
-	private Dictionary<int,MonoBehaviour> moveMap = new Dictionary<int, MonoBehaviour>();
+	private Dictionary<int,MonoBehaviour> moveMap = new Dictionary<int, MonoBehaviour>(){};
 	
 	public enum directions {Neutral=100, Side = 200, Up = 300, Down = 400};
 	public enum Position {Ground = 10, Air = 20};
@@ -32,20 +34,26 @@ public class InputListener : MonoBehaviour {
 	private int move = 000;
 	
 	void Awake(){
-		moveMap.Add(000,  basicNeutral);
-		moveMap.Add(000,  basicSide);
-		moveMap.Add(000,  basicUp);
-		moveMap.Add(000,  basicDown);
+		moveMap.Add(112,  basicNeutral);
+		moveMap.Add(212,  basicSide);
+		moveMap.Add(312,  basicUp);
+		moveMap.Add(412,  basicDown);
 		
-		moveMap.Add(000,  airNeutral);
-		moveMap.Add(000,  airSide);
-		moveMap.Add(000,  airUp);
-		moveMap.Add(000,  airDown);
+		moveMap.Add(122,  airNeutral);
+		moveMap.Add(222,  airSide);
+		moveMap.Add(322,  airUp);
+		moveMap.Add(422,  airDown);
 		
-		moveMap.Add(000,  specialNeutral);
-		moveMap.Add(000,  specialSide);
-		moveMap.Add(000,  specialUp);
-		moveMap.Add(000,  specialDown);
+		moveMap.Add(113,  specialNeutral);
+		moveMap.Add(213,  specialSide);
+		moveMap.Add(313,  specialUp);
+		moveMap.Add(413,  specialDown);
+		
+		moveMap.Add(123,  specialNeutral);
+		moveMap.Add(223,  specialSide);
+		moveMap.Add(323,  specialUp);
+		moveMap.Add(423,  specialDown);
+		
 	}
 	
 	void Update () {
@@ -72,12 +80,46 @@ public class InputListener : MonoBehaviour {
 		}
 		
 		move = dir+position+button;
-		/*if(Input.GetMouseButtonDown(0)){
-			AS.enabled = true;
-		}*/
 		
-		if(Input.GetMouseButtonDown(1)){
-			this.gameObject.SendMessage("Interrupt");
+		MonoBehaviour output;
+		if(moveMap.TryGetValue(move, out output)){
+			output.enabled = true;
 		}
+		else{
+			if(Input.GetKey(KeyCode.LeftArrow)){
+				Movement.UpdateHorizontal(-1f,playerIndex);
+			}
+			if(Input.GetKey(KeyCode.RightArrow)){
+				Movement.UpdateHorizontal(1f,playerIndex);
+			}
+			if(Input.GetKey(KeyCode.UpArrow)){
+				Movement.UpdateVertical(1f,playerIndex);
+			}
+			if(Input.GetKey(KeyCode.DownArrow)){
+				Movement.UpdateVertical(-1f,playerIndex);
+			}
+		}
+		
+		
+		if(Input.GetKey(KeyCode.Space)){
+			Movement.UpdateJump(2,playerIndex);
+		}
+		if(Input.GetKeyDown(KeyCode.Space)){
+			Movement.UpdateJump(1,playerIndex);
+		}
+		if(Input.GetKeyUp(KeyCode.Space)){
+			Movement.UpdateJump(3,playerIndex);
+		}
+		
+		
+//		if(Input.GetMouseButtonDown(0)){
+//			AS.enabled = true;
+//		}
+		
+//		if(Input.GetMouseButtonDown(1)){
+//			this.gameObject.SendMessage("Interrupt");
+//		}
+		
+		
 	}
 }
