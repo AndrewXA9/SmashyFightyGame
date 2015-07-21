@@ -37,7 +37,7 @@ public class MultiPlayerCameraFocus : MonoBehaviour
 	void Update () 
 	{
 		positionCamera();
-		Debug.Log(zoomValue);
+		//Debug.Log(zoomValue);
 	}
 
 	void positionCamera()

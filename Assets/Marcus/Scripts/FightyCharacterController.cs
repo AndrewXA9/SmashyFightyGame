@@ -5,6 +5,8 @@ using UnityStandardAssets.CrossPlatformInput;  //used from standard assets 2D
 [RequireComponent(typeof (FightyCharacterMovement))]
 public class FightyCharacterController : MonoBehaviour 
 {
+	[SerializeField] private int PlayerIndex = 1;
+
 	private FightyCharacterMovement character;
 	private bool jump;
 	
@@ -20,7 +22,8 @@ public class FightyCharacterController : MonoBehaviour
 		if (!jump)
 		{
 			// Read the jump input in Update so button presses aren't missed.
-			jump = CrossPlatformInputManager.GetButtonDown("Jump");
+			//jump = CrossPlatformInputManager.GetButtonDown("Jump");
+			jump = Movement.GetJump(PlayerIndex);
 		}
 	}
 	
@@ -28,7 +31,9 @@ public class FightyCharacterController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		// Read the inputs.
-		float h = CrossPlatformInputManager.GetAxis("Horizontal");
+		//float h = CrossPlatformInputManager.GetAxis("Horizontal");
+		float h = Movement.GetHorizontal(PlayerIndex);
+		Debug.Log (h);
 		// Pass all parameters to the character control script.
 		character.Move(h, jump);
 		jump = false;
